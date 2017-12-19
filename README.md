@@ -1,5 +1,13 @@
+
 #### Rails version: 5.1.4
 #### Ruby version: 2.4.2
+
+### Live version: https://fathomless-headland-59455.herokuapp.com
+* test user
+```
+    name: Michael
+    password: password1
+```
 
 #### Steps to run the app:
 1. git clone https://github.com/m-rwash/code-challenge.git
