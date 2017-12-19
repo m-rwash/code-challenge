@@ -1,0 +1,5 @@
+<%= form_for(@skill, url: skills_path(user_id: @user.id)) do |f| %>
+	<%= f.label :name %>
+	<%= f.text_field :name %>
+	<%= f.submit("Add Skill") %>
+<% end %>

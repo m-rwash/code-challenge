@@ -1,0 +1,9 @@
+<h1>Users: <%=@user.name%></h1>
+
+<h3>Skills: </h3>
+	<ul>
+		<% @user.skills.each do |skill| %>
+		<li><%= link_to(skill.name, skill_path(skill.id))%></li>
+		<% end %>
+	</ul>
+<%= link_to("Add nw skill", new_skill_path(user_id: @user.id)) %>
