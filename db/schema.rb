@@ -22,8 +22,8 @@ ActiveRecord::Schema.define(version: 20171219124815) do
   end
 
   create_table "user_skills", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "skill_id"
+    t.bigint "user_id"
+    t.bigint "skill_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "plus_count", default: 0
@@ -39,4 +39,6 @@ ActiveRecord::Schema.define(version: 20171219124815) do
     t.string "password_digest"
   end
 
+  add_foreign_key "user_skills", "skills"
+  add_foreign_key "user_skills", "users"
 end

@@ -1,16 +1,26 @@
-<h1>Users: <%=@user.name%></h1>
+<div class="row">
+	<div class="col-md-2">
+		<h3><%=@user.name%></h3>
+	</div>
+</div>
 
-<h3>Skills: </h3>
+<div class="row">
+	<div class="col-md-12">
+		<h3>Skills: </h3>
 	<ul>
-		<% @user.skills.each do |skill| %>
-		<li><%= link_to(skill.name, skill_path(skill.id))%> |
-			<%= plus_count(@user, skill) %>
+	<% @user.skills.each do |skill| %>
+		<li>
+			<div class="col-md-2"><span class="badge"> <%= plus_count(@user, skill) %> </span>
+				<%= link_to(skill.name, skill_path(skill.id))%> </div>
 			<% unless current_user == @user %>
-				| <%= link_to("PLUS", plus_one_index_path(user: @user, skill: skill), method: :post) %>
+			<div class="col-md-1"><%= link_to '<i class="glyphicon glyphicons-plus"></i> +1'.html_safe, plus_one_index_path(user: @user, skill: skill), method: :post, class: 'label label-primary' %> </div>
+
 			<% end %>
 		</li>
 		<% end %>
 	</ul>
-<% if current_user == @user %>
-	<%= link_to("Add new skill", new_skill_path(user_id: @user.id)) %>
-<% end %>
+	<% if current_user == @user %>
+	<%= link_to '<i class="glyphicon glyphicons-plus"></i> Add New Skill'.html_safe, new_skill_path(user_id: @user.id), class: 'btn btn-primary btn-md' %>
+	<% end %>
+	</div>
+</div>
