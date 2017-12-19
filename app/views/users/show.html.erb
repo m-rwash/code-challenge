@@ -4,10 +4,13 @@
 	<ul>
 		<% @user.skills.each do |skill| %>
 		<li><%= link_to(skill.name, skill_path(skill.id))%> |
-			<%= plus_count(@user, skill) %> | 
-			<%= link_to("PLUS", plus_one_index_path(user: @user, skill: skill), method: :post) %>
-
+			<%= plus_count(@user, skill) %>
+			<% unless current_user == @user %>
+				| <%= link_to("PLUS", plus_one_index_path(user: @user, skill: skill), method: :post) %>
+			<% end %>
 		</li>
 		<% end %>
 	</ul>
-<%= link_to("Add nw skill", new_skill_path(user_id: @user.id)) %>
+<% if current_user == @user %>
+	<%= link_to("Add new skill", new_skill_path(user_id: @user.id)) %>
+<% end %>

@@ -1,5 +1,7 @@
 class SkillsController < ApplicationController
 
+  before_action :confirm_logged_in
+
   def new
   	@user = User.find(params[:user_id])
   	@skill = @user.skills.new
@@ -7,9 +9,10 @@ class SkillsController < ApplicationController
 
   def create
   	@user = User.find(params[:user_id])
-  	@skill = Skill.new(skill_params)
-  	@skill.users << @user
+    @skill = Skill.where('lower(name) = ?', skill_params[:name].downcase).first 
+    @skill ||= Skill.new(skill_params)
   	if @skill.save
+      @skill.users << @user
       flash[:notice] = "Skill added successfully."
       redirect_to(user_path(@user))
     else
@@ -18,7 +21,7 @@ class SkillsController < ApplicationController
   end
 
   def show
-  	@skill = Skill.find(params[:id])
+  	@skill = Skill.includes(:users).find(params[:id])
   end
 
   private

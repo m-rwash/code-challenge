@@ -1,4 +1,5 @@
 class PlusOneController < ApplicationController
+	before_action :confirm_logged_in
 	def create
 		@user_skill = UserSkill.where(user: params[:user]).where(skill: params[:skill]).first
   		if !(@user_skill.users_clicked.include? Integer(params[:user]))
