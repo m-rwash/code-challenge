@@ -13,7 +13,7 @@
 			<div class="col-md-2"><span class="badge"> <%= plus_count(@user, skill) %> </span>
 				<%= link_to(skill.name, skill_path(skill.id))%> </div>
 			<% unless current_user == @user %>
-			<div class="col-md-1"><%= link_to '<i class="glyphicon glyphicons-plus"></i> +1'.html_safe, plus_one_index_path(user: @user, skill: skill), method: :post, class: 'label label-primary' %> </div>
+			<div class="col-md-1"><%= link_to '<i class="glyphicon glyphicons-plus"></i> +1'.html_safe, plus_one_index_path(user: @user, skill: skill, current_user: current_user), method: :post, class: 'label label-primary' %> </div>
 
 			<% end %>
 		</li>

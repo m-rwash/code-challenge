@@ -1,24 +1,13 @@
-# README
+#### Rails version: 5.1.4
+#### Ruby version: 2.4.2
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+#### Steps to run the app:
+1. git clone https://github.com/m-rwash/code-challenge.git
+2. cd code-challenge
+3. adjust database.yml
+4. bundle install
+5. bundle exec rake db:create
+6. bundle exec rake db:migrate
+7. bundle exec rake db:seed
+8. rails server
+9. surf localhost:3000
