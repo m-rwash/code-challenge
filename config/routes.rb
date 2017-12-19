@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :plus_one, only: :create
+  #get 'plus_one'
   resources :skills, only: [:show, :create, :new]
 
   resources :users, only: [:index, :show]
